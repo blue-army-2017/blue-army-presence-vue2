@@ -2,7 +2,7 @@ import Vue from 'vue';
 import VueRouter from 'vue-router';
 import { beforeEnter } from './config/routeProtection';
 import Home from './views/Home.vue';
-import Login from './components/auth/Login.vue';
+import Login from './views/auth/Login.vue';
 
 Vue.use(VueRouter);
 

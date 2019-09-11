@@ -1,4 +1,5 @@
-import * as firebase from "firebase";
+import firebase from 'firebase';
+import 'firebase/auth';
 
 export function beforeEnter(to, from, next) {
     if (firebase.auth().currentUser) {
