@@ -1,21 +1,21 @@
 <template>
     <md-card class="login-card">
-        <md-card-header>Blue Army Presence - Login</md-card-header>
+        <md-card-header>{{ $t('auth.login.header') }}</md-card-header>
         <md-card-content>
             <md-field class="login-field">
-                <label>E-Mail</label>
+                <label>{{ $t('auth.login.email') }}</label>
                 <md-input class="login-input" v-model="email" @keypress.enter="login"/>
             </md-field>
             <md-field class="login-field">
-                <label>Password</label>
+                <label>{{ $t('auth.login.password') }}</label>
                 <md-input class="login-input" type="password" v-model="password" @keypress.enter="login"/>
             </md-field>
             <md-button class="login-button md-raised" @click="login" :disabled="email === '' || password === ''">
-                Login
+                {{ $t('auth.login.loginButton') }}
             </md-button>
         </md-card-content>
-        <md-dialog-alert :md-active.sync="loginError" md-content="Username or password not correct!"
-                         md-confirm-text="Close"/>
+        <md-dialog-alert :md-active.sync="loginError" :md-content="$t('auth.login.errorDialog.content')"
+                         :md-confirm-text="$t('auth.login.errorDialog.confirm')"/>
     </md-card>
 </template>
 

@@ -1,0 +1,26 @@
+{
+    "auth": {
+        "login": {
+            "header": "Blue Army Presence - Login",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "loginButton": "Login",
+            "errorDialog": {
+                "content": "E-Mail oder Passwort nicht korrekt!",
+                "confirm": "Schließen"
+            }
+        },
+        "userButton": {
+            "logoutButton": "Logout"
+        }
+    },
+    "app": {
+        "home": {
+            "title": "Blue Army Presence",
+            "menu-home": "Start",
+            "menu-members": "Mitglieder",
+            "menu-games": "Spiele",
+            "menu-statistics": "Statistiken"
+        }
+    }
+}

@@ -6,7 +6,7 @@
                            @click="menuVisible = !menuVisible">
                     <md-icon>menu</md-icon>
                 </md-button>
-                <span class="md-title">Blue Army Presence</span>
+                <span class="md-title">{{ $t('app.home.title') }}</span>
             </div>
             <div class="md-toolbar-section-end">
                 <user-button/>
@@ -17,19 +17,19 @@
             <md-list>
                 <md-list-item>
                     <md-icon>home</md-icon>
-                    <span class="md-list-item-text">Home</span>
+                    <span class="md-list-item-text">{{ $t('app.home.menu-home') }}</span>
                 </md-list-item>
                 <md-list-item>
                     <md-icon>people</md-icon>
-                    <span class="md-list-item-text">Members</span>
+                    <span class="md-list-item-text">{{ $t('app.home.menu-members') }}</span>
                 </md-list-item>
                 <md-list-item>
                     <md-icon>sports_hockey</md-icon>
-                    <span class="md-list-item-text">Games</span>
+                    <span class="md-list-item-text">{{ $t('app.home.menu-games') }}</span>
                 </md-list-item>
                 <md-list-item>
                     <md-icon>bar_chart</md-icon>
-                    <span class="md-list-item-text">Statistics</span>
+                    <span class="md-list-item-text">{{ $t('app.home.menu-statistics') }}</span>
                 </md-list-item>
             </md-list>
         </md-app-drawer>
