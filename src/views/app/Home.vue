@@ -1,0 +1,101 @@
+<template>
+    <md-app class="app-home" md-waterfall md-mode="fixed">
+        <md-app-toolbar class="md-primary">
+            <div class="md-toolbar-section-start">
+                <md-button v-if="currentWidth < 600" class="md-icon-button app-menu-button"
+                           @click="menuVisible = !menuVisible">
+                    <md-icon>menu</md-icon>
+                </md-button>
+                <span class="md-title">Blue Army Presence</span>
+            </div>
+            <div class="md-toolbar-section-end">
+                <user-button/>
+            </div>
+        </md-app-toolbar>
+
+        <md-app-drawer :md-active.sync="menuVisible" md-permanent="full">
+            <md-list>
+                <md-list-item>
+                    <md-icon>home</md-icon>
+                    <span class="md-list-item-text">Home</span>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon>people</md-icon>
+                    <span class="md-list-item-text">Members</span>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon>sports_hockey</md-icon>
+                    <span class="md-list-item-text">Games</span>
+                </md-list-item>
+                <md-list-item>
+                    <md-icon>bar_chart</md-icon>
+                    <span class="md-list-item-text">Statistics</span>
+                </md-list-item>
+            </md-list>
+        </md-app-drawer>
+
+        <md-app-content>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
+                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
+                explicabo, neque.</p>
+        </md-app-content>
+    </md-app>
+</template>
+
+<script>
+    import UserButton from '../../components/auth/UserButton';
+
+    export default {
+        data: () => ({
+            menuVisible: false,
+            currentWidth: window.innerWidth
+        }),
+        methods: {
+            handleResize() {
+                this.currentWidth = window.innerWidth;
+            }
+        },
+        created() {
+            window.addEventListener('resize', this.handleResize);
+        },
+        destroyed() {
+            window.removeEventListener('resize', this.handleResize);
+        },
+        components: {
+            UserButton
+        }
+    }
+</script>
+
+<style scoped>
+    .app-home {
+        width: 100%;
+        height: 100%;
+    }
+
+    .md-drawer {
+        width: 230px;
+        max-width: calc(100vw - 125px);
+    }
+</style>
