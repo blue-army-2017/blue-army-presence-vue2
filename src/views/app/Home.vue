@@ -13,9 +13,9 @@
             </div>
         </md-app-toolbar>
 
-        <md-app-drawer :md-active.sync="menuVisible" md-permanent="full">
+        <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" class="app-menu-drawer">
             <md-list>
-                <md-list-item>
+                <md-list-item to="/">
                     <md-icon>home</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-home') }}</span>
                 </md-list-item>
@@ -35,30 +35,7 @@
         </md-app-drawer>
 
         <md-app-content>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
-            <p>Lorem ipsum dolor sit amet, consectetur adipisicing elit. Error quibusdam, non molestias et! Earum
-                magnam, similique, quo recusandae placeat dicta asperiores modi sint ea repudiandae maxime? Quae non
-                explicabo, neque.</p>
+            <router-view/>
         </md-app-content>
     </md-app>
 </template>
@@ -94,7 +71,7 @@
         height: 100%;
     }
 
-    .md-drawer {
+    .app-menu-drawer {
         width: 230px;
         max-width: calc(100vw - 125px);
     }
