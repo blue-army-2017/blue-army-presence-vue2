@@ -6,7 +6,7 @@
         <md-menu-content>
             <md-menu-item @click="signOut">
                 <md-icon>power_settings_new</md-icon>
-                <span>Logout</span>
+                <span>{{ $t('auth.userButton.logoutButton') }}</span>
             </md-menu-item>
         </md-menu-content>
     </md-menu>
