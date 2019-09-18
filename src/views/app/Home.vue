@@ -41,7 +41,7 @@
 </template>
 
 <script>
-    import UserButton from '../../components/auth/UserButton';
+    import { UserButton } from '../../components';
 
     export default {
         data: () => ({
