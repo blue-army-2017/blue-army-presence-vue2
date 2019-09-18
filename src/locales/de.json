@@ -27,6 +27,12 @@
                 "title-active-members": "Mitglieder",
                 "title-inactive-members": "Inaktive Mitglieder"
             }
+        },
+        "members": {
+            "header-last-name": "Name",
+            "header-first-name": "Vorname",
+            "header-edit": "Bearbeiten",
+            "header-delete": "Löschen"
         }
     }
 }
