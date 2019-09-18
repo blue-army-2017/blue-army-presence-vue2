@@ -15,11 +15,11 @@
 
         <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" class="app-menu-drawer">
             <md-list>
-                <md-list-item to="/">
+                <md-list-item :to="{name: 'home'}" exact @click="menuVisible = false">
                     <md-icon>home</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-home') }}</span>
                 </md-list-item>
-                <md-list-item>
+                <md-list-item :to="{name: 'members'}" @click="menuVisible = false">
                     <md-icon>people</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-members') }}</span>
                 </md-list-item>

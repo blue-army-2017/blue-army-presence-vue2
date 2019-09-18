@@ -1,8 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import Login from './views/auth/Login.vue';
-import Home from './views/app/Home.vue';
-import Start from './views/app/menu/Start';
+import { Home, Login, Members, Start } from './views';
 import { isUserSignedIn } from './api';
 
 Vue.use(VueRouter);
@@ -19,6 +17,11 @@ const routes = [
                 path: '',
                 name: 'home',
                 component: Start
+            },
+            {
+                path: 'members',
+                name: 'members',
+                component: Members
             }
         ]
     },
