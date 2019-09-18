@@ -21,6 +21,12 @@
             "menu-members": "Mitglieder",
             "menu-games": "Spiele",
             "menu-statistics": "Statistiken"
+        },
+        "menu": {
+            "members": {
+                "title-active-members": "Mitglieder",
+                "title-inactive-members": "Inaktive Mitglieder"
+            }
         }
     }
 }
