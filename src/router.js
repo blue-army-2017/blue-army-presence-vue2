@@ -3,7 +3,7 @@ import VueRouter from 'vue-router';
 import Login from './views/auth/Login.vue';
 import Home from './views/app/Home.vue';
 import Start from './views/app/menu/Start';
-import { isUserSignedIn } from './api';
+import firebase from 'firebase/app';
 
 Vue.use(VueRouter);
 
@@ -36,12 +36,12 @@ const routes = [
 const router = new VueRouter({mode: 'history', routes});
 
 router.beforeEach((to, from, next) => {
-    const userSignedIn = isUserSignedIn();
+    const currentUser = firebase.auth().currentUser;
     const requiresAuth = to.matched.some(record => record.meta.requiresAuth);
 
-    if (requiresAuth && !userSignedIn) {
+    if (requiresAuth && !currentUser) {
         next({name: 'login'});
-    } else if (!requiresAuth && userSignedIn) {
+    } else if (!requiresAuth && currentUser) {
         next({name: 'home'});
     } else {
         next();
