@@ -21,6 +21,18 @@
             "menu-members": "Mitglieder",
             "menu-games": "Spiele",
             "menu-statistics": "Statistiken"
+        },
+        "menu": {
+            "members": {
+                "title-active-members": "Mitglieder",
+                "title-inactive-members": "Inaktive Mitglieder"
+            }
+        },
+        "members": {
+            "header-last-name": "Name",
+            "header-first-name": "Vorname",
+            "header-edit": "Bearbeiten",
+            "header-delete": "Löschen"
         }
     }
 }
