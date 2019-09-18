@@ -1,25 +1,22 @@
 <template>
-    <md-table md-card class="member-table">
+    <md-table md-card v-model="members" class="member-table">
         <md-table-toolbar>
             <h1>{{ title }}</h1>
         </md-table-toolbar>
 
-        <md-table-row>
-            <md-table-head>{{ $t('app.members.header-last-name') }}</md-table-head>
-            <md-table-head>{{ $t('app.members.header-first-name') }}</md-table-head>
-            <md-table-head>{{ $t('app.members.header-edit') }}</md-table-head>
-            <md-table-head>{{ $t('app.members.header-delete') }}</md-table-head>
-        </md-table-row>
+        <md-table-empty-state md-icon="people"
+                              md-label="Keine Mitglieder"
+                              md-description="Alle Mitglieder der Blue Army werden hier aufgeführt" />
 
-        <md-table-row :key="member.id" v-for="member in members">
-            <md-table-cell>{{ member.lastName }}</md-table-cell>
-            <md-table-cell>{{ member.firstName }}</md-table-cell>
-            <md-table-cell>
+        <md-table-row slot="md-table-row" slot-scope="{ item }">
+            <md-table-cell :md-label="$t('app.members.header-last-name')">{{ item.lastName }}</md-table-cell>
+            <md-table-cell :md-label="$t('app.members.header-first-name')">{{ item.firstName }}</md-table-cell>
+            <md-table-cell :md-label="$t('app.members.header-edit')">
                 <md-button class="md-icon-button">
                     <md-icon>edit</md-icon>
                 </md-button>
             </md-table-cell>
-            <md-table-cell>
+            <md-table-cell :md-label="$t('app.members.header-delete')">
                 <md-button class="md-icon-button">
                     <md-icon>delete</md-icon>
                 </md-button>
