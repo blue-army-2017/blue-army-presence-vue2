@@ -2,6 +2,8 @@
     <md-table md-card v-model="members" class="member-table">
         <md-table-toolbar>
             <h1>{{ title }}</h1>
+
+            <edit-member-dialog :event-name="editMemberEventName" />
         </md-table-toolbar>
 
         <md-table-empty-state md-icon="people"
@@ -16,7 +18,7 @@
                 {{ item.val().firstName }}
             </md-table-cell>
             <md-table-cell :md-label="$t('app.members.table.header-edit')">
-                <md-button class="md-icon-button">
+                <md-button class="md-icon-button" @click="editMember(item)">
                     <md-icon>edit</md-icon>
                 </md-button>
             </md-table-cell>
@@ -30,8 +32,18 @@
 </template>
 
 <script>
+    import { eventBus } from '../../../eventBus';
+    import { EditMemberDialog } from '.';
+
     export default {
-        data: () => ({}),
+        data: () => ({
+            editMemberEventName: "editMember"
+        }),
+        methods: {
+            editMember(member) {
+                eventBus.$emit(this.editMemberEventName, member);
+            }
+        },
         props: {
             title: {
                 type: String,
@@ -41,6 +53,9 @@
                 type: Array,
                 required: true
             }
+        },
+        components: {
+            EditMemberDialog
         }
     }
 </script>

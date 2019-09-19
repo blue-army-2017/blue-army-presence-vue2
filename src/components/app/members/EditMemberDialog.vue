@@ -17,7 +17,7 @@
             <md-button v-if="create" :disabled="!isDataValid" @click="createMember">
                 {{ $t('app.members.dialog.edit.button-confirm-add') }}
             </md-button>
-            <md-button v-else :disabled="!isDataValid">
+            <md-button v-else :disabled="!isDataValid" @click="editMember">
                 {{ $t('app.members.dialog.edit.button-confirm-edit') }}
             </md-button>
         </md-dialog-actions>
@@ -31,11 +31,12 @@
 
 <script>
     import { eventBus } from '../../../eventBus';
-    import { addMember } from '../../../api';
+    import { addMember, updateMember } from '../../../api';
 
     export default {
         data: () => ({
             active: false,
+            memberId: '',
             firstName: '',
             lastName: '',
             error: false
@@ -52,7 +53,8 @@
         },
         computed: {
             isDataValid() {
-                return this.firstName.trim() !== '' && this.lastName.trim() !== '';
+                return (this.firstName.trim() !== '' && this.lastName.trim() !== '')
+                    && (this.create || this.memberId !== '');
             }
         },
         methods: {
@@ -63,10 +65,23 @@
                         this.error = true;
                     });
                 this.active = false;
+            },
+            editMember() {
+                updateMember(this.memberId, this.firstName.trim(), this.lastName.trim())
+                    .catch(error => {
+                        console.log(error);
+                        this.error = true;
+                    });
+                this.active = false;
             }
         },
         created() {
-            eventBus.$on(this.eventName, () => {
+            eventBus.$on(this.eventName, payload => {
+                if (payload) {
+                    this.memberId = payload.key;
+                    this.firstName = payload.val().firstName;
+                    this.lastName = payload.val().lastName;
+                }
                 this.active = true;
             });
         }
@@ -76,5 +91,6 @@
 <style scoped>
     .edit-member-dialog {
         padding: 0 10px;
+        max-height: 50vh;
     }
 </style>
