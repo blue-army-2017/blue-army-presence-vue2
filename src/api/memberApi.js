@@ -8,3 +8,7 @@ export function getMemberRef() {
     }
     return memberRef;
 }
+
+export async function addMember(firstName, lastName) {
+    return await getMemberRef().push().set({firstName, lastName});
+}

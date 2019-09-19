@@ -43,7 +43,9 @@
                     "title-add": "Mitglied hinzufügen",
                     "button-cancel": "Abbrechen",
                     "button-confirm-edit": "Bearbeiten",
-                    "button-confirm-add": "Hinzufügen"
+                    "button-confirm-add": "Hinzufügen",
+                    "error-message": "Fehler beim Schreiben in die Datenbank!",
+                    "error-confirm": "Ok"
                 }
             }
         }

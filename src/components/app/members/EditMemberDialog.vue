@@ -14,20 +14,31 @@
 
         <md-dialog-actions>
             <md-button @click="active = false">{{ $t('app.members.dialog.edit.button-cancel') }}</md-button>
-            <md-button v-if="create">{{ $t('app.members.dialog.edit.button-confirm-add') }}</md-button>
-            <md-button v-else>{{ $t('app.members.dialog.edit.button-confirm-edit') }}</md-button>
+            <md-button v-if="create" :disabled="!isDataValid" @click="createMember">
+                {{ $t('app.members.dialog.edit.button-confirm-add') }}
+            </md-button>
+            <md-button v-else :disabled="!isDataValid">
+                {{ $t('app.members.dialog.edit.button-confirm-edit') }}
+            </md-button>
         </md-dialog-actions>
+
+        <md-dialog-confirm :md-active.sync="error"
+                           :md-content="$t('app.members.dialog.edit.error-message')"
+                           :md-confirm-text="$t('app.members.dialog.edit.error-confirm')"
+                           @md-confirm="error = false" />
     </md-dialog>
 </template>
 
 <script>
     import { eventBus } from '../../../eventBus';
+    import { addMember } from '../../../api';
 
     export default {
         data: () => ({
             active: false,
             firstName: '',
-            lastName: ''
+            lastName: '',
+            error: false
         }),
         props: {
             eventName: {
@@ -37,6 +48,21 @@
             create: {
                 type: Boolean,
                 default: false
+            }
+        },
+        computed: {
+            isDataValid() {
+                return this.firstName.trim() !== '' && this.lastName.trim() !== '';
+            }
+        },
+        methods: {
+            createMember() {
+                addMember(this.firstName.trim(), this.lastName.trim())
+                    .catch(error => {
+                        console.log(error);
+                        this.error = true;
+                    });
+                this.active = false;
             }
         },
         created() {
