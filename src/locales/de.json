@@ -40,7 +40,10 @@
             "dialog": {
                 "edit": {
                     "title-edit": "Mitglied bearbeiten",
-                    "title-add": "Mitglied hinzufügen"
+                    "title-add": "Mitglied hinzufügen",
+                    "button-cancel": "Abbrechen",
+                    "button-confirm-edit": "Bearbeiten",
+                    "button-confirm-add": "Hinzufügen"
                 }
             }
         }
