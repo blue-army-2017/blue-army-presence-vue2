@@ -32,7 +32,9 @@
             "header-last-name": "Name",
             "header-first-name": "Vorname",
             "header-edit": "Bearbeiten",
-            "header-delete": "Löschen"
+            "header-delete": "Löschen",
+            "empty-state-header": "Keine Mitglieder",
+            "empty-state-body": "Alle Mitglieder der Blue Army werden hier aufgeführt"
         }
     }
 }

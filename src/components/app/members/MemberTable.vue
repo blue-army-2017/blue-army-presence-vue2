@@ -5,8 +5,8 @@
         </md-table-toolbar>
 
         <md-table-empty-state md-icon="people"
-                              md-label="Keine Mitglieder"
-                              md-description="Alle Mitglieder der Blue Army werden hier aufgeführt" />
+                              :md-label="$t('app.members.empty-state-header')"
+                              :md-description="$t('app.members.empty-state-body')" />
 
         <md-table-row slot="md-table-row" slot-scope="{ item }">
             <md-table-cell :md-label="$t('app.members.header-last-name')">{{ item.val().lastName }}</md-table-cell>
