@@ -6,17 +6,22 @@
 
 <script>
     import { MemberTable } from '../../../components';
+    import { getMemberRef } from '../../../api';
 
     export default {
         data: () => ({
-            members: [
-                {id: '1', firstName: 'Max', lastName: 'Mustermann'},
-                {id: '2', firstName: 'Maria', lastName: 'Musterfrau'},
-                {id: '3', firstName: 'Tom', lastName: 'Meier'}
-            ]
+            members: []
         }),
         components: {
             MemberTable
+        },
+        created() {
+            getMemberRef().on('value', snapshot => {
+                this.members = [];
+                snapshot.forEach(member => {
+                    this.members.push(member);
+                });
+            });
         }
     }
 </script>

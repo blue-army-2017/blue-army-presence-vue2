@@ -9,8 +9,8 @@
                               md-description="Alle Mitglieder der Blue Army werden hier aufgeführt" />
 
         <md-table-row slot="md-table-row" slot-scope="{ item }">
-            <md-table-cell :md-label="$t('app.members.header-last-name')">{{ item.lastName }}</md-table-cell>
-            <md-table-cell :md-label="$t('app.members.header-first-name')">{{ item.firstName }}</md-table-cell>
+            <md-table-cell :md-label="$t('app.members.header-last-name')">{{ item.val().lastName }}</md-table-cell>
+            <md-table-cell :md-label="$t('app.members.header-first-name')">{{ item.val().firstName }}</md-table-cell>
             <md-table-cell :md-label="$t('app.members.header-edit')">
                 <md-button class="md-icon-button">
                     <md-icon>edit</md-icon>
