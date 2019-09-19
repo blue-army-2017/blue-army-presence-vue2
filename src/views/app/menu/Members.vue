@@ -1,19 +1,33 @@
 <template>
     <md-content class="member-content">
         <member-table :title="$t('app.menu.members.title-active-members')" :members="members" />
+
+        <edit-member-dialog :event-name="addMemberEventName" :create="true" />
+
+        <md-button class="md-fab md-fab-bottom-right" @click="showAddDialog">
+            <md-icon>add</md-icon>
+        </md-button>
     </md-content>
 </template>
 
 <script>
-    import { MemberTable } from '../../../components';
+    import { EditMemberDialog, MemberTable } from '../../../components';
     import { getMemberRef } from '../../../api';
+    import { eventBus } from '../../../eventBus';
 
     export default {
         data: () => ({
-            members: []
+            members: [],
+            addMemberEventName: "addMember"
         }),
         components: {
-            MemberTable
+            MemberTable,
+            EditMemberDialog
+        },
+        methods: {
+            showAddDialog() {
+                eventBus.$emit(this.addMemberEventName);
+            }
         },
         created() {
             getMemberRef().on('value', snapshot => {

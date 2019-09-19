@@ -29,12 +29,20 @@
             }
         },
         "members": {
-            "header-last-name": "Name",
-            "header-first-name": "Vorname",
-            "header-edit": "Bearbeiten",
-            "header-delete": "Löschen",
-            "empty-state-header": "Keine Mitglieder",
-            "empty-state-body": "Alle Mitglieder der Blue Army werden hier aufgeführt"
+            "table": {
+                "header-last-name": "Name",
+                "header-first-name": "Vorname",
+                "header-edit": "Bearbeiten",
+                "header-delete": "Löschen",
+                "empty-state-header": "Keine Mitglieder",
+                "empty-state-body": "Alle Mitglieder der Blue Army werden hier aufgeführt"
+            },
+            "dialog": {
+                "edit": {
+                    "title-edit": "Mitglied bearbeiten",
+                    "title-add": "Mitglied hinzufügen"
+                }
+            }
         }
     }
 }
