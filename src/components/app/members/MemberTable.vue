@@ -48,11 +48,18 @@
             EditMemberDialog
         },
         created() {
-            getMemberRef().on('value', snapshot => {
+            getMemberRef().orderByChild('lastName').on('value', snapshot => {
                 this.members = [];
+                const activeMembers = [];
+                const inactiveMembers = [];
                 snapshot.forEach(member => {
-                    this.members.push(member);
+                    if (member.val().active) {
+                        activeMembers.push(member);
+                    } else {
+                        inactiveMembers.push(member);
+                    }
                 });
+                this.members = activeMembers.concat(inactiveMembers);
             });
         }
     }
