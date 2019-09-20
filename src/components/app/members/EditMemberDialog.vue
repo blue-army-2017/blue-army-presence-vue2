@@ -11,6 +11,7 @@
             <label>{{ $t('app.members.table.header-last-name') }}</label>
             <md-input v-model="lastName" maxlength="30" />
         </md-field>
+        <md-switch v-model="memberActive" :disabled="create">{{ $t('app.members.table.header-state') }}</md-switch>
 
         <md-dialog-actions>
             <md-button @click="active = false">{{ $t('app.members.dialog.edit.button-cancel') }}</md-button>
@@ -31,7 +32,7 @@
 
 <script>
     import { eventBus } from '../../../eventBus';
-    import { addMember, updateMemberName } from '../../../api';
+    import { addMember, updateMember } from '../../../api';
 
     export default {
         data: () => ({
@@ -39,6 +40,7 @@
             memberId: '',
             firstName: '',
             lastName: '',
+            memberActive: true,
             error: false
         }),
         props: {
@@ -59,7 +61,7 @@
         },
         methods: {
             createMember() {
-                addMember(this.firstName.trim(), this.lastName.trim())
+                addMember(this.firstName.trim(), this.lastName.trim(), this.memberActive)
                     .catch(error => {
                         console.log(error);
                         this.error = true;
@@ -67,7 +69,7 @@
                 this.active = false;
             },
             editMember() {
-                updateMemberName(this.memberId, this.firstName.trim(), this.lastName.trim())
+                updateMember(this.memberId, this.firstName.trim(), this.lastName.trim(), this.memberActive)
                     .catch(error => {
                         console.log(error);
                         this.error = true;
@@ -81,6 +83,7 @@
                     this.memberId = payload.key;
                     this.firstName = payload.val().firstName;
                     this.lastName = payload.val().lastName;
+                    this.memberActive = payload.val().active;
                 }
                 this.active = true;
             });

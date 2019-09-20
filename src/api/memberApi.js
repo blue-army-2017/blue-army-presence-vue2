@@ -9,10 +9,10 @@ export function getMemberRef() {
     return memberRef;
 }
 
-export async function addMember(firstName, lastName) {
-    return await getMemberRef().push().set({firstName, lastName, active: true});
+export async function addMember(firstName, lastName, active) {
+    return await getMemberRef().push().set({firstName, lastName, active});
 }
 
-export async function updateMemberName(key, firstName, lastName) {
-    return await getMemberRef().child(key).update({firstName, lastName});
+export async function updateMember(key, firstName, lastName, active) {
+    return await getMemberRef().child(key).update({firstName, lastName, active});
 }

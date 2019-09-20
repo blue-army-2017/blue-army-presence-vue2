@@ -17,13 +17,13 @@
             <md-table-cell :md-label="$t('app.members.table.header-first-name')">
                 {{ item.val().firstName }}
             </md-table-cell>
+            <md-table-cell :md-label="$t('app.members.table.header-state')">
+                <md-checkbox v-model="item.val().active" disabled />
+            </md-table-cell>
             <md-table-cell :md-label="$t('app.members.table.header-edit')">
                 <md-button class="md-icon-button" @click="editMember(item)">
                     <md-icon>edit</md-icon>
                 </md-button>
-            </md-table-cell>
-            <md-table-cell :md-label="$t('app.members.table.header-state')">
-                <md-switch v-model="item.val().active" />
             </md-table-cell>
         </md-table-row>
     </md-table>
