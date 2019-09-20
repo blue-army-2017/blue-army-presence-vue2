@@ -31,7 +31,7 @@
 
 <script>
     import { eventBus } from '../../../eventBus';
-    import { addMember, updateMember } from '../../../api';
+    import { addMember, updateMemberName } from '../../../api';
 
     export default {
         data: () => ({
@@ -67,7 +67,7 @@
                 this.active = false;
             },
             editMember() {
-                updateMember(this.memberId, this.firstName.trim(), this.lastName.trim())
+                updateMemberName(this.memberId, this.firstName.trim(), this.lastName.trim())
                     .catch(error => {
                         console.log(error);
                         this.error = true;

@@ -1,7 +1,7 @@
 <template>
     <md-table md-card v-model="members" class="member-table">
         <md-table-toolbar>
-            <h1>{{ title }}</h1>
+            <h1>{{ $t('app.members.table.title') }}</h1>
 
             <edit-member-dialog :event-name="editMemberEventName" />
         </md-table-toolbar>
@@ -22,10 +22,8 @@
                     <md-icon>edit</md-icon>
                 </md-button>
             </md-table-cell>
-            <md-table-cell :md-label="$t('app.members.table.header-delete')">
-                <md-button class="md-icon-button">
-                    <md-icon>delete</md-icon>
-                </md-button>
+            <md-table-cell :md-label="$t('app.members.table.header-state')">
+                <md-switch v-model="item.val().active" />
             </md-table-cell>
         </md-table-row>
     </md-table>
@@ -34,9 +32,11 @@
 <script>
     import { eventBus } from '../../../eventBus';
     import { EditMemberDialog } from '.';
+    import { getMemberRef } from '../../../api';
 
     export default {
         data: () => ({
+            members: [],
             editMemberEventName: "editMember"
         }),
         methods: {
@@ -44,18 +44,16 @@
                 eventBus.$emit(this.editMemberEventName, member);
             }
         },
-        props: {
-            title: {
-                type: String,
-                required: true
-            },
-            members: {
-                type: Array,
-                required: true
-            }
-        },
         components: {
             EditMemberDialog
+        },
+        created() {
+            getMemberRef().on('value', snapshot => {
+                this.members = [];
+                snapshot.forEach(member => {
+                    this.members.push(member);
+                });
+            });
         }
     }
 </script>

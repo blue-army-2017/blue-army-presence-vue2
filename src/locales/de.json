@@ -22,18 +22,13 @@
             "menu-games": "Spiele",
             "menu-statistics": "Statistiken"
         },
-        "menu": {
-            "members": {
-                "title-active-members": "Mitglieder",
-                "title-inactive-members": "Inaktive Mitglieder"
-            }
-        },
         "members": {
             "table": {
+                "title": "Mitglieder",
                 "header-last-name": "Name",
                 "header-first-name": "Vorname",
                 "header-edit": "Bearbeiten",
-                "header-delete": "Löschen",
+                "header-state": "Aktiv",
                 "empty-state-header": "Keine Mitglieder",
                 "empty-state-body": "Alle Mitglieder der Blue Army werden hier aufgeführt"
             },
