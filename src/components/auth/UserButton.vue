@@ -1,5 +1,5 @@
 <template>
-    <md-menu md-direction="bottom-start">
+    <md-menu md-direction="bottom-start" md-align-trigger>
         <md-button class="md-icon-button" md-menu-trigger>
             <md-icon>account_circle</md-icon>
         </md-button>
@@ -28,5 +28,4 @@
 </script>
 
 <style scoped>
-
 </style>
