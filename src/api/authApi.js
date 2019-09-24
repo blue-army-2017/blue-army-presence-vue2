@@ -18,10 +18,15 @@ export function signOut(errorHandling) {
         .catch(errorHandling);
 }
 
-export function changePassword(newPwd, successHandling, errorHandling) {
+export function changePassword(currentPwd, newPwd, successHandling, errorHandling) {
     if (firebase.auth().currentUser) {
-        firebase.auth().currentUser.updatePassword(newPwd)
-            .then(successHandling)
+        const credential = firebase.auth.EmailAuthProvider.credential(firebase.auth().currentUser.email, currentPwd);
+        firebase.auth().currentUser.reauthenticateWithCredential(credential)
+            .then(() => {
+                firebase.auth().currentUser.updatePassword(newPwd)
+                    .then(successHandling)
+                    .catch(errorHandling);
+            })
             .catch(errorHandling);
     }
 }

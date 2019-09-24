@@ -15,6 +15,7 @@
             "logoutButton": "Logout"
         },
         "changePassword": {
+            "currentPassword": "Aktuelles Passwort",
             "newPassword": "Neues Passwort",
             "repeatPassword": "Passwort wiederholen",
             "submitPassword": "Passwort ändern",
@@ -22,6 +23,7 @@
             "passwordsNotEqualMessage": "Passwörter müssen übereinstimmen",
             "snackbarSuccessMessage": "Passwort erfolgreich geändert!",
             "snackbarErrorMessage": "Passwort konnte nicht geändert werden!",
+            "snackbarBack": "Zurück",
             "snackbarButton": "Ok"
         }
     },

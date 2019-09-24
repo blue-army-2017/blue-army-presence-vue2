@@ -1,9 +1,13 @@
 <template>
     <md-content class="change-password-site">
         <md-content class="change-password-form">
+            <md-field class="form-component">
+                <label>{{ $t('auth.changePassword.currentPassword') }}</label>
+                <md-input v-model="currentPassword" type="password" @keypress.enter="submitPassword" />
+            </md-field>
             <md-field class="form-component" :class="{'md-invalid': passwordHasError}">
                 <label>{{ $t('auth.changePassword.newPassword') }}</label>
-                <md-input v-model="password" md-counter="8" type="password" @keypress.enter="submitPassword" />
+                <md-input v-model="newPassword" md-counter="8" type="password" @keypress.enter="submitPassword" />
                 <span class="md-error">
                     {{ $t('auth.changePassword.passwordErrorMessage') }}
                 </span>
@@ -29,7 +33,10 @@
 
         <md-snackbar md-position="center" :md-duration="Infinity" :md-active.sync="snackbarActive" md-persistent>
             <span>{{ snackbarMessage }}</span>
-            <md-button class="md-primary" @click="snackbarActive = false">
+            <md-button v-if="!snackbarError" class="md-primary" @click="back">
+                {{ $t('auth.changePassword.snackbarBack') }}
+            </md-button>
+            <md-button v-else class="md-primary" @click="snackbarActive = false">
                 {{ $t('auth.changePassword.snackbarButton') }}
             </md-button>
         </md-snackbar>
@@ -41,30 +48,34 @@
 
     export default {
         data: () => ({
-            password: '',
+            currentPassword: '',
+            newPassword: '',
             passwordRevision: '',
             snackbarMessage: '',
+            snackbarError: false,
             snackbarActive: false
         }),
         computed: {
             passwordHasError() {
-                return this.password.length < 8;
+                return this.newPassword.length < 8;
             },
             passwordsNotEqual() {
-                return this.password !== this.passwordRevision;
+                return this.newPassword !== this.passwordRevision;
             },
             changePasswordDisabled() {
-                return this.passwordHasError || this.passwordsNotEqual;
+                return this.passwordHasError || this.passwordsNotEqual || this.currentPassword === '';
             }
         },
         methods: {
             changePassword() {
-                changePassword(this.password, () => {
+                changePassword(this.currentPassword, this.newPassword, () => {
                     this.snackbarMessage = this.$t('auth.changePassword.snackbarSuccessMessage');
+                    this.snackbarError = false;
                     this.snackbarActive = true;
                 }, error => {
                     console.error(error);
                     this.snackbarMessage = this.$t('auth.changePassword.snackbarErrorMessage');
+                    this.snackbarError = true;
                     this.snackbarActive = true;
                 });
             },
