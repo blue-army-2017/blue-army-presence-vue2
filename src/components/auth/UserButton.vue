@@ -6,7 +6,7 @@
         <md-menu-content>
             <md-menu-item :to="{name: 'changePassword'}">
                 <md-icon>lock</md-icon>
-                <span>{{ 'Passwort ändern' }}</span>
+                <span>{{ $t('auth.userButton.changePasswordButton') }}</span>
             </md-menu-item>
             <md-menu-item @click="signOut">
                 <md-icon>power_settings_new</md-icon>

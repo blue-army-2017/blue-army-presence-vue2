@@ -11,6 +11,7 @@
             }
         },
         "userButton": {
+            "changePasswordButton": "Passwort ändern",
             "logoutButton": "Logout"
         },
         "changePassword": {
