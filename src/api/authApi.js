@@ -17,3 +17,11 @@ export function signOut(errorHandling) {
         })
         .catch(errorHandling);
 }
+
+export function changePassword(newPwd, successHandling, errorHandling) {
+    if (firebase.auth().currentUser) {
+        firebase.auth().currentUser.updatePassword(newPwd)
+            .then(successHandling)
+            .catch(errorHandling);
+    }
+}
