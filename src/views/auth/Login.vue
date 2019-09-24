@@ -5,18 +5,18 @@
             <md-card-content class="login-card-content">
                 <md-field class="login-field">
                     <label>{{ $t('auth.login.email') }}</label>
-                    <md-input class="login-input" v-model="email" @keypress.enter="login"/>
+                    <md-input class="login-input" v-model="email" @keypress.enter="submitLogin" />
                 </md-field>
                 <md-field class="login-field">
                     <label>{{ $t('auth.login.password') }}</label>
-                    <md-input class="login-input" type="password" v-model="password" @keypress.enter="login"/>
+                    <md-input class="login-input" type="password" v-model="password" @keypress.enter="submitLogin" />
                 </md-field>
-                <md-button class="login-button md-raised" @click="login" :disabled="email === '' || password === ''">
+                <md-button class="login-button md-raised" @click="login" :disabled="loginDisabled">
                     {{ $t('auth.login.loginButton') }}
                 </md-button>
             </md-card-content>
             <md-dialog-alert :md-active.sync="loginError" :md-content="$t('auth.login.errorDialog.content')"
-                             :md-confirm-text="$t('auth.login.errorDialog.confirm')"/>
+                             :md-confirm-text="$t('auth.login.errorDialog.confirm')" />
         </md-card>
     </md-content>
 </template>
@@ -30,12 +30,22 @@
             password: '',
             loginError: false
         }),
+        computed: {
+            loginDisabled() {
+                return this.email === '' || this.password === '';
+            }
+        },
         methods: {
             login() {
                 signInWithEmailAndPassword(this.email, this.password, error => {
                     console.log(error);
                     this.loginError = true;
                 });
+            },
+            submitLogin() {
+                if (!this.loginDisabled) {
+                    this.login();
+                }
             }
         }
     }
