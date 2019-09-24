@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { Home, Login, Members, Start } from './views';
+import { ChangePassword, Home, Login, Members, Start } from './views';
 import firebase from 'firebase/app';
 
 Vue.use(VueRouter);
@@ -29,6 +29,14 @@ const routes = [
         path: '/login',
         name: 'login',
         component: Login
+    },
+    {
+        path: '/user/changePassword',
+        name: 'changePassword',
+        component: ChangePassword,
+        meta: {
+            requiresAuth: true
+        }
     },
     {
         path: '*',
