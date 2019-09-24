@@ -6,7 +6,11 @@
             <edit-member-dialog :event-name="editMemberEventName" />
         </md-table-toolbar>
 
-        <md-table-empty-state md-icon="people"
+        <md-table-empty-state v-if="loading">
+            <md-progress-spinner md-mode="indeterminate" />
+        </md-table-empty-state>
+        <md-table-empty-state v-else
+                              md-icon="people"
                               :md-label="$t('app.members.table.empty-state-header')"
                               :md-description="$t('app.members.table.empty-state-body')" />
 
@@ -37,7 +41,8 @@
     export default {
         data: () => ({
             members: [],
-            editMemberEventName: "editMember"
+            editMemberEventName: "editMember",
+            loading: true
         }),
         methods: {
             editMember(member) {
@@ -60,6 +65,7 @@
                     }
                 });
                 this.members = activeMembers.concat(inactiveMembers);
+                this.loading = false;
             });
         }
     }
