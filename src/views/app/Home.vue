@@ -9,7 +9,7 @@
                 <span class="md-title">{{ $t('app.home.title') }}</span>
             </div>
             <div class="md-toolbar-section-end">
-                <user-button/>
+                <user-button />
             </div>
         </md-app-toolbar>
 
@@ -23,7 +23,7 @@
                     <md-icon>people</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-members') }}</span>
                 </md-list-item>
-                <md-list-item>
+                <md-list-item :to="{name: 'seasons'}" @click="menuVisible = false">
                     <md-icon>sports_hockey</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-games') }}</span>
                 </md-list-item>
@@ -35,7 +35,7 @@
         </md-app-drawer>
 
         <md-app-content>
-            <router-view/>
+            <router-view />
         </md-app-content>
     </md-app>
 </template>
