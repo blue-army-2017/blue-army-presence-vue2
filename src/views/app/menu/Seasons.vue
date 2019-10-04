@@ -12,7 +12,9 @@
 
             <ul v-if="seasons.length > 0" class="seasons-button-list">
                 <li class="seasons-button-list-item" v-for="season in seasons" :key="season.id">
-                    <md-button class="season-button">{{ season.name }}</md-button>
+                    <md-button class="season-button" :to="{name: 'seasonGames', params: {seasonId: season.id}}">
+                        {{ season.name }}
+                    </md-button>
                 </li>
                 <li v-if="!isCurrentSeasonPresent" class="seasons-button-list-item">
                     <md-button class="season-button md-accent"

@@ -1,6 +1,6 @@
 import Vue from 'vue';
 import VueRouter from 'vue-router';
-import { ChangePassword, Home, Login, Members, Seasons, Start, WorkInProgress } from './views';
+import { ChangePassword, Home, Login, Members, SeasonGames, Seasons, Start, WorkInProgress } from './views';
 import firebase from 'firebase/app';
 
 Vue.use(VueRouter);
@@ -27,6 +27,11 @@ const routes = [
                 path: 'season',
                 name: 'seasons',
                 component: Seasons
+            },
+            {
+                path: 'season/:seasonId/games',
+                name: 'seasonGames',
+                component: SeasonGames
             },
             {
                 path: 'statistics',
