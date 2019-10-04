@@ -64,6 +64,9 @@
             "dialogTitle": "Saison {name} anlegen?",
             "dialogCancel": "Abbrechen",
             "dialogConfirm": "Anlegen"
+        },
+        "seasonGames": {
+            "title": "Spiele Saison {name}"
         }
     }
 }
