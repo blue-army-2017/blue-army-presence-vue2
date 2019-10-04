@@ -19,3 +19,8 @@ export function getCurrentSeasonName() {
         return `${today.getFullYear()} / ${today.getFullYear() + 1}`
     }
 }
+
+export function addCurrentSeason(errorHandling) {
+    getSeasonRef().push().set({name: getCurrentSeasonName()})
+        .catch(errorHandling);
+}

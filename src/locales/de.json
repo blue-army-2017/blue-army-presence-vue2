@@ -60,7 +60,10 @@
         "seasons": {
             "seasonSelect": "Saison auswählen",
             "newSeason": "Neue Saison",
-            "emptySeasons": "Keine Saison vorhanden"
+            "emptySeasons": "Keine Saison vorhanden",
+            "dialogTitle": "Saison {name} anlegen?",
+            "dialogCancel": "Abbrechen",
+            "dialogConfirm": "Anlegen"
         }
     }
 }
