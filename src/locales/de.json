@@ -32,7 +32,7 @@
             "title": "Blue Army Presence",
             "menu-home": "Start",
             "menu-members": "Mitglieder",
-            "menu-games": "Spiele",
+            "menu-games": "Saisons",
             "menu-statistics": "Statistiken"
         },
         "members": {
@@ -56,6 +56,14 @@
                     "error-confirm": "Ok"
                 }
             }
+        },
+        "seasons": {
+            "seasonSelect": "Saison auswählen",
+            "newSeason": "Neue Saison",
+            "emptySeasons": "Keine Saison vorhanden",
+            "dialogTitle": "Saison {name} anlegen?",
+            "dialogCancel": "Abbrechen",
+            "dialogConfirm": "Anlegen"
         }
     }
 }
