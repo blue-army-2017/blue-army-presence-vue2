@@ -5,7 +5,7 @@
 
             <md-progress-spinner v-if="loading" md-mode="indeterminate" />
             <md-empty-state v-if="seasons.length === 0 && !loading"
-                            md-icon="sports_hockey"
+                            md-icon="calendar_today"
                             :md-label="$t('app.seasons.emptySeasons')">
                 <md-button class="md-accent" @click="dialogActive = true">{{ $t('app.seasons.newSeason') }}</md-button>
             </md-empty-state>
