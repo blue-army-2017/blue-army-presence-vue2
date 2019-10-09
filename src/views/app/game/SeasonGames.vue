@@ -10,7 +10,7 @@
                             :md-label="$t('app.seasonGames.emptyStateLabel')" />
             <md-card v-for="game in games" :key="game.id" class="game-card" md-with-hover>
                 <md-card-header>
-                    <div class="md-title">{{ game.home ? homeSign : awaySign }} {{game.opponent }}</div>
+                    <div class="md-title">{{ game.home ? homeSign : awaySign }} {{ game.opponent }}</div>
                     <div class="md-subtitle">{{ game.date }}</div>
                 </md-card-header>
 
@@ -58,6 +58,15 @@
                 if (this.seasonName === '') {
                     this.seasonName = this.$t('app.seasonGames.title', {name: snapshot.val().name});
                 }
+                this.games = [];
+                snapshot.child('games').forEach(game => {
+                    this.games.push({
+                        id: game.key,
+                        opponent: game.val().opponent,
+                        date: game.val().date,
+                        home: game.val().home
+                    });
+                });
             });
         }
     }
