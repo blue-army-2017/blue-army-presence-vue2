@@ -77,6 +77,15 @@
                 this.active = false;
             }
         },
+        watch: {
+            active() {
+                // reset after dialog was closed
+                this.memberId = '';
+                this.firstName = '';
+                this.lastName = '';
+                this.memberActive = true;
+            }
+        },
         created() {
             eventBus.$on(this.eventName, payload => {
                 if (payload) {
