@@ -11,14 +11,15 @@
             <md-card v-for="game in games" :key="game.id" class="game-card" md-with-hover>
                 <md-card-header>
                     <div class="md-title">{{ game.home ? homeSign : awaySign }} {{ game.opponent }}</div>
-                    <div class="md-subtitle">{{ game.date }}</div>
+                    <div class="md-subtitle">{{ game.date.toLocaleDateString('de-DE') }}</div>
                 </md-card-header>
 
                 <md-card-actions>
                     <md-button class="md-icon-button">
                         <md-icon>delete_forever</md-icon>
                     </md-button>
-                    <md-button class="md-icon-button">
+                    <md-button class="md-icon-button"
+                               :to="{name: 'game', params: {seasonId: seasonId, gameId: game.id}}">
                         <md-icon>edit</md-icon>
                     </md-button>
                 </md-card-actions>
@@ -63,10 +64,11 @@
                     this.games.push({
                         id: game.key,
                         opponent: game.val().opponent,
-                        date: game.val().date,
+                        date: new Date(game.val().date),
                         home: game.val().home
                     });
                 });
+                this.games.sort((a, b) => a.date - b.date);
             });
         }
     }
