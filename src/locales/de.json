@@ -70,6 +70,14 @@
             "homeSign": "vs.",
             "awaySign": "@",
             "emptyStateLabel": "Keine Spiele angelegt"
+        },
+        "game": {
+            "opponent": "Gegner",
+            "gameDate": "Spieltag",
+            "home": "Heim",
+            "away": "Auswärts",
+            "modeRegular": "Hauptrunde",
+            "modePlayoffs": "Playoffs"
         }
     }
 }
