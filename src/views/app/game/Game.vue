@@ -18,11 +18,14 @@
             <md-radio v-model="mode" :value="modeRegularSeason">{{ $t('app.game.modeRegular') }}</md-radio>
             <md-radio v-model="mode" :value="modePlayoffs">{{ $t('app.game.modePlayoffs') }}</md-radio>
         </md-content>
+
+        <present-members class="input-item" />
     </md-content>
 </template>
 
 <script>
     import { GAME_MODE_PLAYOFFS, GAME_MODE_REGULAR_SEASON } from '../../../constants';
+    import { PresentMembers } from '../../../components';
 
     export default {
         data: () => ({
@@ -38,6 +41,9 @@
         created() {
             this.$material.locale.firstDayOfAWeek = 1; // Monday first day of week
             this.$material.locale.dateFormat = 'dd.MM.yyyy';
+        },
+        components: {
+            PresentMembers
         }
     }
 </script>
