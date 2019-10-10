@@ -77,7 +77,12 @@
             "home": "Heim",
             "away": "Auswärts",
             "modeRegular": "Hauptrunde",
-            "modePlayoffs": "Playoffs"
+            "modePlayoffs": "Playoffs",
+            "presentMembers": {
+                "addPresentMember": "Mitglied hinzufügen",
+                "selectLabel": "Mitglied",
+                "addButton": "Hinzufügen"
+            }
         }
     }
 }
