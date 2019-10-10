@@ -67,6 +67,7 @@
                         this.error = true;
                     });
                 this.active = false;
+                this.resetValues();
             },
             editMember() {
                 updateMember(this.memberId, this.firstName.trim(), this.lastName.trim(), this.memberActive)
@@ -75,11 +76,9 @@
                         this.error = true;
                     });
                 this.active = false;
-            }
-        },
-        watch: {
-            active() {
-                // reset after dialog was closed
+                this.resetValues();
+            },
+            resetValues() {
                 this.memberId = '';
                 this.firstName = '';
                 this.lastName = '';
