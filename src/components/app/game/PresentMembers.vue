@@ -30,6 +30,12 @@
             activeMembersLoading: true,
             membersSnapshot: null
         }),
+        props: {
+            gameId: {
+                type: String,
+                required: true
+            }
+        },
         computed: {
             activeMembers() {
                 let activeMembers = [];

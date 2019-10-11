@@ -19,28 +19,51 @@
             <md-radio v-model="mode" :value="modePlayoffs">{{ $t('app.game.modePlayoffs') }}</md-radio>
         </md-content>
 
-        <present-members class="input-item" />
+        <md-button class="md-raised" :disabled="!valuesValid">Speichern</md-button>
+
+        <present-members v-if="gameInDatabase" class="input-item" :game-id="gameId" />
     </md-content>
 </template>
 
 <script>
+    import { getGameRef } from "../../../api";
     import { GAME_MODE_PLAYOFFS, GAME_MODE_REGULAR_SEASON } from '../../../constants';
     import { PresentMembers } from '../../../components';
 
     export default {
         data: () => ({
+            gameId: '',
             opponent: '',
             date: null,
             home: true,
-            mode: GAME_MODE_REGULAR_SEASON
+            mode: GAME_MODE_REGULAR_SEASON,
+            gameInDatabase: false
         }),
         computed: {
             modeRegularSeason: () => GAME_MODE_REGULAR_SEASON,
-            modePlayoffs: () => GAME_MODE_PLAYOFFS
+            modePlayoffs: () => GAME_MODE_PLAYOFFS,
+            seasonId() {
+                return this.$route.params.seasonId;
+            },
+            valuesValid() {
+                return this.opponent !== '' && this.date;
+            }
         },
         created() {
+            this.gameId = this.$route.params.gameId;
             this.$material.locale.firstDayOfAWeek = 1; // Monday first day of week
             this.$material.locale.dateFormat = 'dd.MM.yyyy';
+            getGameRef(this.seasonId, this.gameId).on('value', snapshot => {
+                if (snapshot.val()) {
+                    this.opponent = snapshot.val().opponent;
+                    this.date = snapshot.val().date;
+                    this.home = snapshot.val().home;
+                    this.mode = snapshot.val().mode;
+                    this.gameInDatabase = true;
+                } else {
+                    this.gameInDatabase = false;
+                }
+            });
         },
         components: {
             PresentMembers

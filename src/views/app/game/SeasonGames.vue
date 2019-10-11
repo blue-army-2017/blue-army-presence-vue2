@@ -25,7 +25,8 @@
                 </md-card-actions>
             </md-card>
 
-            <md-button class="md-fab md-fab-bottom-left">
+            <md-button class="md-fab md-fab-bottom-left"
+                       :to="{name: 'game', params: {seasonId: seasonId, gameId: newGameRef()}}">
                 <md-icon>add</md-icon>
             </md-button>
         </md-content>
@@ -52,7 +53,11 @@
                 return this.$t('app.seasonGames.awaySign');
             }
         },
-        methods: {},
+        methods: {
+            newGameRef() {
+                return getSeasonRef().child(`${this.seasonId}/games`).push().key;
+            }
+        },
         created() {
             getSeasonRef().child(this.seasonId).on('value', snapshot => {
                 this.loading = false;
