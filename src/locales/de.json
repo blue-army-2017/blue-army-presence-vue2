@@ -83,6 +83,7 @@
             "modePlayoffs": "Playoffs",
             "submitButton": "Speichern",
             "presentMembers": {
+                "presentMembersTitle": "Anwesende Mitglieder",
                 "addPresentMember": "Mitglied hinzufügen",
                 "selectLabel": "Mitglied",
                 "addButton": "Hinzufügen"

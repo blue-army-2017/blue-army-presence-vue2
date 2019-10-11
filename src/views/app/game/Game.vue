@@ -26,7 +26,7 @@
             {{ $t('app.game.submitButton') }}
         </md-button>
 
-        <present-members v-if="gameInDatabase" class="input-item" :game-id="gameId" />
+        <present-members v-if="gameInDatabase" class="input-item" :season-id="seasonId" :game-id="gameId" />
     </md-content>
 </template>
 
