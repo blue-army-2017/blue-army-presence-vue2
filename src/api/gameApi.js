@@ -12,3 +12,7 @@ export async function saveGame(seasonId, gameId, opponent, date, home, mode) {
         mode
     });
 }
+
+export async function deleteGame(seasonId, gameId) {
+    return await getGameRef(seasonId, gameId).remove();
+}

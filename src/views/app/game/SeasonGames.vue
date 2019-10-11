@@ -15,7 +15,7 @@
                 </md-card-header>
 
                 <md-card-actions>
-                    <md-button class="md-icon-button">
+                    <md-button class="md-icon-button" @click="gameToDelete = game">
                         <md-icon>delete_forever</md-icon>
                     </md-button>
                     <md-button class="md-icon-button"
@@ -23,6 +23,14 @@
                         <md-icon>edit</md-icon>
                     </md-button>
                 </md-card-actions>
+
+                <md-dialog-confirm :md-active.sync="deleteActive"
+                                   :md-title="$t('app.seasonGames.deleteTitle',
+                                   {opponent: gameToDelete ? gameToDelete.opponent : ''})"
+                                   :md-confirm-text="$t('app.seasonGames.deleteConfirm')"
+                                   :md-cancel-text="$t('app.seasonGames.deleteCancel')"
+                                   @md-cancel="gameToDelete = null"
+                                   @md-confirm="deleteGame" />
             </md-card>
 
             <md-button class="md-fab md-fab-bottom-left"
@@ -34,13 +42,15 @@
 </template>
 
 <script>
-    import { getSeasonRef } from '../../../api';
+    import { deleteGame, getSeasonRef } from '../../../api';
 
     export default {
         data: () => ({
             seasonName: '',
             games: [],
-            loading: true
+            loading: true,
+            gameToDelete: null,
+            deleteActive: false
         }),
         computed: {
             seasonId() {
@@ -60,6 +70,19 @@
             parseDate(dateString) {
                 const dmy = dateString.split('.');
                 return new Date(dmy[2], dmy[1] - 1, dmy[0]);
+            },
+            deleteGame() {
+                deleteGame(this.seasonId, this.gameToDelete.id)
+                    .catch(error => {
+                        console.error(error);
+                        // todo error handling
+                    });
+                this.gameToDelete = null;
+            }
+        },
+        watch: {
+            gameToDelete() {
+                this.deleteActive = this.gameToDelete !== null;
             }
         },
         created() {

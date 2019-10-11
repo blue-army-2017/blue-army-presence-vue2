@@ -69,7 +69,10 @@
             "title": "Spiele Saison {name}",
             "homeSign": "vs.",
             "awaySign": "@",
-            "emptyStateLabel": "Keine Spiele angelegt"
+            "emptyStateLabel": "Keine Spiele angelegt",
+            "deleteTitle": "Spiel gegen {opponent} wirklich löschen?",
+            "deleteConfirm": "Ok",
+            "deleteCancel": "Abbrechen"
         },
         "game": {
             "opponent": "Gegner",

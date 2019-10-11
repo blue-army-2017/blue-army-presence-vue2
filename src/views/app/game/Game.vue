@@ -62,7 +62,7 @@
                         // todo show success message
                     })
                     .catch(error => {
-                        console.log(error);
+                        console.error(error);
                         // todo error handling
                     });
             }
