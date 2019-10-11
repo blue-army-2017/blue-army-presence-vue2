@@ -11,7 +11,7 @@
             <md-card v-for="game in games" :key="game.id" class="game-card" md-with-hover>
                 <md-card-header>
                     <div class="md-title">{{ game.home ? homeSign : awaySign }} {{ game.opponent }}</div>
-                    <div class="md-subtitle">{{ game.date.toLocaleDateString('de-DE') }}</div>
+                    <div class="md-subtitle">{{ game.date }}</div>
                 </md-card-header>
 
                 <md-card-actions>
@@ -56,6 +56,10 @@
         methods: {
             newGameRef() {
                 return getSeasonRef().child(`${this.seasonId}/games`).push().key;
+            },
+            parseDate(dateString) {
+                const dmy = dateString.split('.');
+                return new Date(dmy[2], dmy[1] - 1, dmy[0]);
             }
         },
         created() {
@@ -69,11 +73,11 @@
                     this.games.push({
                         id: game.key,
                         opponent: game.val().opponent,
-                        date: new Date(game.val().date),
+                        date: game.val().date,
                         home: game.val().home
                     });
                 });
-                this.games.sort((a, b) => a.date - b.date);
+                this.games.sort((a, b) => this.parseDate(a.date) - this.parseDate(b.date));
             });
         }
     }

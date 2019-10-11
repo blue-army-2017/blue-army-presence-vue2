@@ -22,14 +22,16 @@
             <md-radio v-model="mode" :value="modePlayoffs">{{ $t('app.game.modePlayoffs') }}</md-radio>
         </md-content>
 
-        <md-button class="md-raised" :disabled="!valuesValid">{{ $t('app.game.submitButton') }}</md-button>
+        <md-button class="md-raised" :disabled="!valuesValid" @click="saveGame">
+            {{ $t('app.game.submitButton') }}
+        </md-button>
 
         <present-members v-if="gameInDatabase" class="input-item" :game-id="gameId" />
     </md-content>
 </template>
 
 <script>
-    import { getGameRef } from "../../../api";
+    import { getGameRef, saveGame } from '../../../api';
     import { GAME_MODE_PLAYOFFS, GAME_MODE_REGULAR_SEASON } from '../../../constants';
     import { PresentMembers } from '../../../components';
 
@@ -37,7 +39,7 @@
         data: () => ({
             gameId: '',
             opponent: '',
-            date: null,
+            date: new Date().toLocaleDateString('de-DE'),
             home: true,
             mode: GAME_MODE_REGULAR_SEASON,
             gameInDatabase: false,
@@ -51,6 +53,18 @@
             },
             valuesValid() {
                 return this.opponent !== '' && this.date;
+            }
+        },
+        methods: {
+            saveGame() {
+                saveGame(this.seasonId, this.gameId, this.opponent, this.date, this.home, this.mode)
+                    .then(() => {
+                        // todo show success message
+                    })
+                    .catch(error => {
+                        console.log(error);
+                        // todo error handling
+                    });
             }
         },
         created() {
