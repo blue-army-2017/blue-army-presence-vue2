@@ -78,6 +78,7 @@
             "away": "Auswärts",
             "modeRegular": "Hauptrunde",
             "modePlayoffs": "Playoffs",
+            "submitButton": "Speichern",
             "presentMembers": {
                 "addPresentMember": "Mitglied hinzufügen",
                 "selectLabel": "Mitglied",

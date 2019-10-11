@@ -1,5 +1,8 @@
 <template>
-    <md-content class="game-form">
+    <md-content v-if="gameLoading" class="game-form">
+        <md-progress-spinner md-mode="indeterminate" />
+    </md-content>
+    <md-content v-else class="game-form">
         <md-field class="input-item">
             <label>{{ $t('app.game.opponent') }}</label>
             <md-input v-model="opponent" />
@@ -19,7 +22,7 @@
             <md-radio v-model="mode" :value="modePlayoffs">{{ $t('app.game.modePlayoffs') }}</md-radio>
         </md-content>
 
-        <md-button class="md-raised" :disabled="!valuesValid">Speichern</md-button>
+        <md-button class="md-raised" :disabled="!valuesValid">{{ $t('app.game.submitButton') }}</md-button>
 
         <present-members v-if="gameInDatabase" class="input-item" :game-id="gameId" />
     </md-content>
@@ -37,7 +40,8 @@
             date: null,
             home: true,
             mode: GAME_MODE_REGULAR_SEASON,
-            gameInDatabase: false
+            gameInDatabase: false,
+            gameLoading: true
         }),
         computed: {
             modeRegularSeason: () => GAME_MODE_REGULAR_SEASON,
@@ -54,6 +58,7 @@
             this.$material.locale.firstDayOfAWeek = 1; // Monday first day of week
             this.$material.locale.dateFormat = 'dd.MM.yyyy';
             getGameRef(this.seasonId, this.gameId).on('value', snapshot => {
+                this.gameLoading = false;
                 if (snapshot.val()) {
                     this.opponent = snapshot.val().opponent;
                     this.date = snapshot.val().date;
