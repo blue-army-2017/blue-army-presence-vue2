@@ -82,6 +82,9 @@
             "modeRegular": "Hauptrunde",
             "modePlayoffs": "Playoffs",
             "submitButton": "Speichern",
+            "snackbarButton": "Ok",
+            "saveSuccessMessage": "Spieldaten erfolgreich gespeichert!",
+            "saveErrorMessage": "Spieldaten konnten nicht gespeichert werden!",
             "presentMembers": {
                 "presentMembersTitle": "Anwesende Mitglieder",
                 "addPresentMember": "Mitglied hinzufügen",

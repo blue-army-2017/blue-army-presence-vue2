@@ -27,6 +27,13 @@
         </md-button>
 
         <present-members v-if="gameInDatabase" class="input-item" :season-id="seasonId" :game-id="gameId" />
+
+        <md-snackbar md-position="center" :md-duration="Infinity" :md-active.sync="showMessage">
+            <span>{{ message }}</span>
+            <md-button class="md-primary" @click="showMessage = false">
+                {{ $t('app.game.snackbarButton') }}
+            </md-button>
+        </md-snackbar>
     </md-content>
 </template>
 
@@ -43,7 +50,9 @@
             home: true,
             mode: GAME_MODE_REGULAR_SEASON,
             gameInDatabase: false,
-            gameLoading: true
+            gameLoading: true,
+            showMessage: false,
+            message: ''
         }),
         computed: {
             modeRegularSeason: () => GAME_MODE_REGULAR_SEASON,
@@ -59,11 +68,13 @@
             saveGame() {
                 saveGame(this.seasonId, this.gameId, this.opponent, this.date, this.home, this.mode)
                     .then(() => {
-                        // todo show success message
+                        this.message = this.$t('app.game.saveSuccessMessage');
+                        this.showMessage = true;
                     })
                     .catch(error => {
                         console.error(error);
-                        // todo error handling
+                        this.message = this.$t('app.game.saveErrorMessage');
+                        this.showMessage = true;
                     });
             }
         },
