@@ -52,7 +52,7 @@
                 return this.$route.params.seasonId;
             },
             valuesValid() {
-                return this.opponent !== '' && this.date;
+                return this.opponent !== '' && this.date !== '';
             }
         },
         methods: {
