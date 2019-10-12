@@ -35,6 +35,10 @@
             "menu-games": "Saisons",
             "menu-statistics": "Statistiken"
         },
+        "start": {
+            "title": "Blue Army",
+            "currentSeasonButton": "Aktuelle Saison"
+        },
         "members": {
             "table": {
                 "title": "Mitglieder",
