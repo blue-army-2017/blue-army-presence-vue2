@@ -26,7 +26,7 @@
 
                 <md-dialog-confirm :md-active.sync="deleteActive"
                                    :md-title="$t('app.seasonGames.deleteTitle',
-                                   {opponent: gameToDelete ? gameToDelete.opponent : ''})"
+                                   {date: gameToDelete ? gameToDelete.date : ''})"
                                    :md-confirm-text="$t('app.seasonGames.deleteConfirm')"
                                    :md-cancel-text="$t('app.seasonGames.deleteCancel')"
                                    @md-cancel="gameToDelete = null"

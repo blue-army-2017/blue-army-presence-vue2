@@ -70,7 +70,7 @@
             "homeSign": "vs.",
             "awaySign": "@",
             "emptyStateLabel": "Keine Spiele angelegt",
-            "deleteTitle": "Spiel gegen {opponent} wirklich löschen?",
+            "deleteTitle": "Spiel vom {date} wirklich löschen?",
             "deleteConfirm": "Ok",
             "deleteCancel": "Abbrechen"
         },
