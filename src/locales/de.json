@@ -89,7 +89,9 @@
                 "presentMembersTitle": "Anwesende Mitglieder",
                 "addPresentMember": "Mitglied hinzufügen",
                 "selectLabel": "Mitglied",
-                "addButton": "Hinzufügen"
+                "addButton": "Hinzufügen",
+                "addMemberErrorMessage": "Mitglied konnte nicht hinzugefügt werden!",
+                "deleteMemberErrorMessage": "Mitglied konnte nicht entfernt werden!"
             }
         }
     }

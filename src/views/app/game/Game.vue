@@ -26,11 +26,15 @@
             {{ $t('app.game.submitButton') }}
         </md-button>
 
-        <present-members v-if="gameInDatabase" class="input-item" :season-id="seasonId" :game-id="gameId" />
+        <present-members v-if="gameInDatabase"
+                         class="input-item"
+                         :season-id="seasonId"
+                         :game-id="gameId"
+                         @firebase-error="showMessage" />
 
-        <md-snackbar md-position="center" :md-duration="Infinity" :md-active.sync="showMessage">
+        <md-snackbar md-position="center" :md-duration="Infinity" :md-active.sync="showMessageBar">
             <span>{{ message }}</span>
-            <md-button class="md-primary" @click="showMessage = false">
+            <md-button class="md-primary" @click="showMessageBar = false">
                 {{ $t('app.game.snackbarButton') }}
             </md-button>
         </md-snackbar>
@@ -51,7 +55,7 @@
             mode: GAME_MODE_REGULAR_SEASON,
             gameInDatabase: false,
             gameLoading: true,
-            showMessage: false,
+            showMessageBar: false,
             message: ''
         }),
         computed: {
@@ -68,14 +72,16 @@
             saveGame() {
                 saveGame(this.seasonId, this.gameId, this.opponent, this.date, this.home, this.mode)
                     .then(() => {
-                        this.message = this.$t('app.game.saveSuccessMessage');
-                        this.showMessage = true;
+                        this.showMessage(this.$t('app.game.saveSuccessMessage'));
                     })
                     .catch(error => {
                         console.error(error);
-                        this.message = this.$t('app.game.saveErrorMessage');
-                        this.showMessage = true;
+                        this.showMessage(this.$t('app.game.saveErrorMessage'));
                     });
+            },
+            showMessage(message) {
+                this.message = message;
+                this.showMessageBar = true;
             }
         },
         created() {

@@ -76,7 +76,7 @@
                 addMemberToGame(this.seasonId, this.gameId, this.selectedMember)
                     .catch(error => {
                         console.error(error);
-                        // todo error handling
+                        this.$emit('firebase-error', this.$t('app.game.presentMembers.addMemberErrorMessage'));
                     });
                 this.selectedMember = '';
             },
@@ -84,7 +84,7 @@
                 deleteMemberFromGame(this.seasonId, this.gameId, entryId)
                     .catch(error => {
                         console.error(error);
-                        // todo error handling
+                        this.$emit('firebase-error', this.$t('app.game.presentMembers.deleteMemberErrorMessage'));
                     });
             }
         },
