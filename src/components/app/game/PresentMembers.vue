@@ -5,12 +5,25 @@
     <md-content v-else class="present-members-container">
         <h4>{{ $t('app.game.presentMembers.presentMembersTitle') }}</h4>
 
+        <md-content class="present-members-chip-container">
+            <md-chip class="member-chip"
+                     v-for="entry in presentMembers"
+                     :key="entry.id"
+                     md-deletable
+                     @md-delete="deleteMember(entry.id)">
+                {{ getMemberName(entry.memberId) }}
+            </md-chip>
+        </md-content>
+
         <h4>{{ $t('app.game.presentMembers.addPresentMember') }}</h4>
 
         <md-field>
             <label>{{ $t('app.game.presentMembers.selectLabel') }}</label>
             <md-select v-model="selectedMember">
-                <md-option v-for="memberId in activeMemberIds" :key="memberId" :value="memberId">
+                <md-option v-for="memberId in activeMemberIds"
+                           :key="memberId"
+                           :value="memberId"
+                           :disabled="presentMembers.map(entry => entry.memberId).includes(memberId)">
                     {{ getMemberName(memberId) }}
                 </md-option>
             </md-select>
@@ -23,7 +36,7 @@
 </template>
 
 <script>
-    import { addMemberToGame, getGamePresentMembersRef, getMemberRef } from '../../../api';
+    import { addMemberToGame, deleteMemberFromGame, getGamePresentMembersRef, getMemberRef } from '../../../api';
 
     export default {
         data: () => ({
@@ -66,6 +79,13 @@
                         // todo error handling
                     });
                 this.selectedMember = '';
+            },
+            deleteMember(entryId) {
+                deleteMemberFromGame(this.seasonId, this.gameId, entryId)
+                    .catch(error => {
+                        console.error(error);
+                        // todo error handling
+                    });
             }
         },
         created() {
@@ -92,5 +112,15 @@
         display: flex;
         flex-direction: column;
         align-items: center;
+    }
+
+    .present-members-chip-container {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
+    }
+
+    .member-chip {
+        margin-bottom: 10px;
     }
 </style>

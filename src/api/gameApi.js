@@ -24,3 +24,7 @@ export async function deleteGame(seasonId, gameId) {
 export async function addMemberToGame(seasonId, gameId, memberId) {
     return await getGamePresentMembersRef(seasonId, gameId).push().set({memberId});
 }
+
+export async function deleteMemberFromGame(seasonId, gameId, entryId) {
+    return await getGamePresentMembersRef(seasonId, gameId).child(entryId).remove();
+}
