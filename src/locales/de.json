@@ -1,0 +1,102 @@
+{
+    "auth": {
+        "login": {
+            "header": "Blue Army Presence - Login",
+            "email": "E-Mail",
+            "password": "Passwort",
+            "loginButton": "Login",
+            "errorDialog": {
+                "content": "E-Mail oder Passwort nicht korrekt!",
+                "confirm": "Schließen"
+            }
+        },
+        "userButton": {
+            "changePasswordButton": "Passwort ändern",
+            "logoutButton": "Logout"
+        },
+        "changePassword": {
+            "currentPassword": "Aktuelles Passwort",
+            "newPassword": "Neues Passwort",
+            "repeatPassword": "Passwort wiederholen",
+            "submitPassword": "Passwort ändern",
+            "passwordErrorMessage": "Passwort muss mindestens 8 Zeichen lang sein",
+            "passwordsNotEqualMessage": "Passwörter müssen übereinstimmen",
+            "snackbarSuccessMessage": "Passwort erfolgreich geändert!",
+            "snackbarErrorMessage": "Passwort konnte nicht geändert werden!",
+            "snackbarBack": "Zurück",
+            "snackbarButton": "Ok"
+        }
+    },
+    "app": {
+        "home": {
+            "title": "Blue Army Presence",
+            "menu-home": "Start",
+            "menu-members": "Mitglieder",
+            "menu-games": "Saisons",
+            "menu-statistics": "Statistiken"
+        },
+        "start": {
+            "title": "Blue Army",
+            "currentSeasonButton": "Aktuelle Saison"
+        },
+        "members": {
+            "table": {
+                "title": "Mitglieder",
+                "header-last-name": "Name",
+                "header-first-name": "Vorname",
+                "header-edit": "Bearbeiten",
+                "header-state": "Aktiv",
+                "empty-state-header": "Keine Mitglieder",
+                "empty-state-body": "Alle Mitglieder der Blue Army werden hier aufgeführt"
+            },
+            "dialog": {
+                "edit": {
+                    "title-edit": "Mitglied bearbeiten",
+                    "title-add": "Mitglied hinzufügen",
+                    "button-cancel": "Abbrechen",
+                    "button-confirm-edit": "Bearbeiten",
+                    "button-confirm-add": "Hinzufügen",
+                    "error-message": "Fehler beim Schreiben in die Datenbank!",
+                    "error-confirm": "Ok"
+                }
+            }
+        },
+        "seasons": {
+            "seasonSelect": "Saison auswählen",
+            "newSeason": "Neue Saison",
+            "emptySeasons": "Keine Saison vorhanden",
+            "dialogTitle": "Saison {name} anlegen?",
+            "dialogCancel": "Abbrechen",
+            "dialogConfirm": "Anlegen"
+        },
+        "seasonGames": {
+            "title": "Spiele Saison {name}",
+            "homeSign": "vs.",
+            "awaySign": "@",
+            "emptyStateLabel": "Keine Spiele angelegt",
+            "deleteTitle": "Spiel vom {date} wirklich löschen?",
+            "deleteConfirm": "Ok",
+            "deleteCancel": "Abbrechen"
+        },
+        "game": {
+            "opponent": "Gegner",
+            "gameDate": "Spieltag",
+            "home": "Heim",
+            "away": "Auswärts",
+            "modeRegular": "Hauptrunde",
+            "modePlayoffs": "Playoffs",
+            "submitButton": "Speichern",
+            "snackbarButton": "Ok",
+            "saveSuccessMessage": "Spieldaten erfolgreich gespeichert!",
+            "saveErrorMessage": "Spieldaten konnten nicht gespeichert werden!",
+            "presentMembers": {
+                "presentMembersTitle": "Anwesende Mitglieder",
+                "addPresentMember": "Mitglied hinzufügen",
+                "selectLabel": "Mitglied",
+                "addButton": "Hinzufügen",
+                "addMemberErrorMessage": "Mitglied konnte nicht hinzugefügt werden!",
+                "deleteMemberErrorMessage": "Mitglied konnte nicht entfernt werden!"
+            }
+        }
+    }
+}

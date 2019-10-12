@@ -20,3 +20,10 @@ yarn-error.log*
 *.sln
 *.sw?
 *.iml
+
+# Firebase
+.firebase
+
+# Configuration files
+/src/config/firebaseConfig.js
+.firebaserc
