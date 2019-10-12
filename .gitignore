@@ -21,6 +21,9 @@ yarn-error.log*
 *.sw?
 *.iml
 
+# Firebase
+.firebase
+
 # Configuration files
 /src/config/firebaseConfig.js
 .firebaserc
