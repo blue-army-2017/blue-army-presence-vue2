@@ -27,7 +27,7 @@
                     <md-icon>sports_hockey</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-games') }}</span>
                 </md-list-item>
-                <md-list-item :to="{name: 'statistics'}">
+                <md-list-item :to="{name: 'statistics'}" @click="menuVisible = false">
                     <md-icon>bar_chart</md-icon>
                     <span class="md-list-item-text">{{ $t('app.home.menu-statistics') }}</span>
                 </md-list-item>
