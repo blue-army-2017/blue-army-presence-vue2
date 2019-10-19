@@ -99,6 +99,8 @@
             }
         },
         "statistics": {
+            "title": "Statistiken",
+            "seasonSelect": "Saison",
             "gamesChart": {
                 "title": "Anwesenheit Mitglieder",
                 "legendHome": "Heim",
