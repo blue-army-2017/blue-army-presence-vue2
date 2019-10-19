@@ -3,10 +3,11 @@ import App from './App.vue';
 import router from './router';
 import store from './store';
 import i18n from './i18n'
-import { configureFirebase, configureMaterial } from './config';
+import { configureFirebase, configureGoogleCharts, configureMaterial } from './config';
 
 const firebase = configureFirebase();
 configureMaterial();
+configureGoogleCharts();
 
 Vue.config.productionTip = false;
 

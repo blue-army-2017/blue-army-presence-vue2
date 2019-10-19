@@ -97,6 +97,20 @@
                 "addMemberErrorMessage": "Mitglied konnte nicht hinzugefügt werden!",
                 "deleteMemberErrorMessage": "Mitglied konnte nicht entfernt werden!"
             }
+        },
+        "statistics": {
+            "title": "Statistiken",
+            "seasonSelect": "Saison",
+            "modeTotal": "Gesamt",
+            "modeRegular": "Hauptrunde",
+            "modePlayoffs": "Playoffs",
+            "gamesChart": {
+                "title": "Anwesenheit Mitglieder",
+                "legendHome": "Heim",
+                "legendAway": "Auswärts",
+                "vAxisMember": "Mitglied",
+                "xAxisTotalGames": "Anzahl Spiele"
+            }
         }
     }
 }
