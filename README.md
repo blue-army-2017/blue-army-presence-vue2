@@ -17,3 +17,12 @@ Features:
   * Adding, editing and deleting games of a season
   * Add or remove members from a game
   * Forward from the home page to the games of the current season
+
+### 0.2.0-beta
+
+Date: ???
+
+Features:
+  * Statistics for the presence of members
+  * Statistics for each season
+  * Statistics can be shown for all matches of a season or only for regular season or playoff matches
