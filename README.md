@@ -20,7 +20,7 @@ Features:
 
 ### 0.2.0-beta
 
-Date: ???
+Date: 2019-10-19
 
 Features:
   * Statistics for the presence of members
