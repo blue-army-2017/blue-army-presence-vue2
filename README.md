@@ -26,3 +26,6 @@ Features:
   * Statistics for the presence of members
   * Statistics for each season
   * Statistics can be shown for all matches of a season or only for regular season or playoff matches
+
+Bugfixes:
+  * Incorrect display of the home screen, which sometimes occurred, fixed
