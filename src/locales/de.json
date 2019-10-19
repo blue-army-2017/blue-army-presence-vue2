@@ -101,6 +101,9 @@
         "statistics": {
             "title": "Statistiken",
             "seasonSelect": "Saison",
+            "modeTotal": "Gesamt",
+            "modeRegular": "Hauptrunde",
+            "modePlayoffs": "Playoffs",
             "gamesChart": {
                 "title": "Anwesenheit Mitglieder",
                 "legendHome": "Heim",

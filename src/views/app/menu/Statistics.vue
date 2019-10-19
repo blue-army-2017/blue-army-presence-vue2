@@ -12,17 +12,35 @@
                 </md-option>
             </md-select>
         </md-field>
+
         <games-chart :member-data="memberData" />
+
+        <md-content class="mode-select">
+            <md-radio v-model="mode" value="">
+                <md-icon>sports_hockey</md-icon>
+                <span>{{ $t('app.statistics.modeTotal') }}</span>
+            </md-radio>
+            <md-radio v-model="mode" :value="getRegularMode()">
+                <md-icon>calendar_today</md-icon>
+                <span>{{ $t('app.statistics.modeRegular') }}</span>
+            </md-radio>
+            <md-radio v-model="mode" :value="getPlayoffsMode()">
+                <md-icon>whatshot</md-icon>
+                <span>{{ $t('app.statistics.modePlayoffs') }}</span>
+            </md-radio>
+        </md-content>
     </md-content>
 </template>
 
 <script>
+    import { GAME_MODE_PLAYOFFS, GAME_MODE_REGULAR_SEASON } from '../../../constants';
     import { getCurrentSeasonName, getMemberRef, getSeasonRef } from '../../../api';
     import { GamesChart } from '../../../components/app/statistics';
 
     export default {
         data: () => ({
             season: '',
+            mode: '',
             seasonSnapshot: null,
             memberSnapshot: null
         }),
@@ -45,7 +63,8 @@
                     const awayGames = [];
                     this.seasonSnapshot.child(`${this.season}/games`).forEach(game => {
                         game.child('presentMembers').forEach(presentMember => {
-                            if (presentMember.val().memberId === member.key) {
+                            if (presentMember.val().memberId === member.key
+                                && (this.mode === '' || this.mode === game.val().mode)) {
                                 if (game.val().home) {
                                     homeGames.push(game.key);
                                 } else {
@@ -57,6 +76,14 @@
                     memberData.push([memberName, homeGames.length, awayGames.length]);
                 });
                 return memberData;
+            }
+        },
+        methods: {
+            getRegularMode() {
+                return GAME_MODE_REGULAR_SEASON;
+            },
+            getPlayoffsMode() {
+                return GAME_MODE_PLAYOFFS;
             }
         },
         components: {
@@ -88,5 +115,11 @@
     .season-select {
         width: 10rem;
         margin-left: 1rem;
+    }
+
+    .mode-select {
+        display: flex;
+        flex-flow: row wrap;
+        justify-content: space-evenly;
     }
 </style>
