@@ -97,6 +97,15 @@
                 "addMemberErrorMessage": "Mitglied konnte nicht hinzugefügt werden!",
                 "deleteMemberErrorMessage": "Mitglied konnte nicht entfernt werden!"
             }
+        },
+        "statistics": {
+            "gamesChart": {
+                "title": "Anwesenheit Mitglieder",
+                "legendHome": "Heim",
+                "legendAway": "Auswärts",
+                "vAxisMember": "Mitglied",
+                "xAxisTotalGames": "Anzahl Spiele"
+            }
         }
     }
 }
