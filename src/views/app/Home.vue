@@ -13,7 +13,7 @@
             </div>
         </md-app-toolbar>
 
-        <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" class="app-menu-drawer">
+        <md-app-drawer :md-active.sync="menuVisible" md-permanent="full" :md-swipeable="true" class="app-menu-drawer">
             <md-list>
                 <md-list-item :to="{name: 'home'}" exact @click="menuVisible = false">
                     <md-icon>home</md-icon>
