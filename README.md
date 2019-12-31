@@ -29,3 +29,13 @@ Features:
 
 Bugfixes:
   * Incorrect display of the home screen, which sometimes occurred, fixed
+
+### 0.2.1-beta
+
+Date: ???
+
+Bugfixes:
+  * App drawer can be opened and closed by swipe on devices with touch support
+
+Solved Issues:
+  * GitHub Security Alert "Upgrade serialize-javascript to version 2.1.1 or later" 
