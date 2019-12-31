@@ -32,7 +32,7 @@ Bugfixes:
 
 ### 0.2.1-beta
 
-Date: ???
+Date: 2019-12-31
 
 Bugfixes:
   * App drawer can be opened and closed by swipe on devices with touch support
